@@ -20,7 +20,7 @@ public abstract class BaseController {
 
     static Logger logger = Logger.getLogger(ProductController.class.getName());
 
-//ZA NOT LOGGED AND NOT ADMIN TRQBVA UNAUTHORIZED
+
     @ExceptionHandler({NotLoggedException.class,NotAdminException.class})
     @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
     public ErrorMsg handleNotLogged(Exception e){
@@ -28,7 +28,7 @@ public abstract class BaseController {
         return msg;
     }
 
-    //ZA DRUGI MOGA DA VRUSHTAM BAD_REQUEST
+    
     @ExceptionHandler({BaseException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorMsg handleMyException(Exception e){
@@ -37,7 +37,7 @@ public abstract class BaseController {
         return msg;
 
     }
-    // A ZA VS OSTANALI SERVER_ERROR
+    
     @ExceptionHandler({Exception.class})
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorMsg handleOtherException(Exception e){
